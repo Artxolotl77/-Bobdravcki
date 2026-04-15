@@ -1,0 +1,177 @@
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bobrodravčki - Domov</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-home">
+    <div class="shell">
+        <header>
+            <h1>Bobrova pot</h1>
+            <nav>
+                <a  href="1.html">Meni</a>
+                <a href="0.html">Sledi bobra</a>
+                <a href="2.html">Uganke</a>
+                <a href="3.html">Mokrišče</a>
+                <a class="active" href="4.html">Odpadki</a>
+                <a href="5.html">Zaklad</a>
+            </nav>
+        </header>
+
+        <main class="home-layout">
+            <section class="card">
+                <div class="container">
+                   <h2>♻️ Igra ločevanja odpadkov</h2>
+
+<div id="topbar">
+  <div id="score">Točke: 0</div>
+  <div id="timer">Čas: 60</div>
+</div>
+
+<div id="message"></div>
+
+<div id="item" style="
+    font-size:22px;
+    background:#f5f5f5;
+    padding:20px;
+    border-radius:12px;
+    margin:20px auto;
+    width:200px;
+"></div>
+
+<div style="display:flex;flex-wrap:wrap;justify-content:center;">
+  <div class="bin" data-type="paper">📄 Papir</div>
+  <div class="bin" data-type="plastic">🥤 Plastika</div>
+  <div class="bin" data-type="glass">🍾 Steklo</div>
+  <div class="bin" data-type="metal">🥫 Kovina</div>
+  <div class="bin" data-type="organic">🍎 Bio</div>
+  
+</div>
+
+<style>
+.bin{
+  width:120px;
+  height:120px;
+  background:#1b5e20;
+  color:white;
+  margin:10px;
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  user-select:none;
+  font-size:18px;
+}
+</style>
+
+<script>
+
+let score = 0;
+let gameOver = false;
+
+let current = null;
+
+const items = [
+  { name:"Časopis", type:"paper" },
+  { name:"Plastenka", type:"plastic" },
+  { name:"Kozarec", type:"glass" },
+  { name:"Pločevinka", type:"metal" },
+  { name:"Jabolko", type:"organic" },
+    { name:"Karton", type:"paper" },
+    { name:"Vrečka", type:"plastic" },
+    { name:"Steklenica", type:"glass" },
+    { name:"Aluminijasta folija", type:"metal" },
+    { name:"Ostanki hrane", type:"organic" }
+];
+
+const itemDiv = document.getElementById("item");
+const scoreDiv = document.getElementById("score");
+const message = document.getElementById("message");
+
+let remaining = [...items].sort(() => Math.random() - 0.5);
+
+function nextItem(){
+  if(remaining.length === 0){
+    remaining = [...items].sort(() => Math.random() - 0.5);
+  }
+
+  current = remaining.pop();
+  itemDiv.textContent = current.name;
+}
+
+function endGame(){
+  gameOver = true;
+  message.innerHTML = "🎉 ZMAGA! Tvoja črka je \"B\"!";
+  itemDiv.style.display = "none";
+}
+
+// preverjanje
+function check(type){
+  if(gameOver || !current) return;
+
+  if(current.type === type){
+    score++;
+    message.textContent = "✅ Pravilno!";
+  } else {
+    message.textContent = "❌ Napačno!";
+  }
+
+  scoreDiv.textContent = "Točke: " + score;
+
+  // 👉 KONEC PRI 10 PRAVILNIH
+  if(score >= 10){
+    endGame();
+    return;
+  }
+
+  nextItem();
+}
+
+// klik + touch
+document.querySelectorAll(".bin").forEach(b=>{
+  const fn = ()=>check(b.dataset.type);
+  b.addEventListener("click",fn);
+  b.addEventListener("touchstart",(e)=>{
+    e.preventDefault();
+    fn();
+  },{passive:false});
+});
+
+nextItem();
+
+</script>
+                </div>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #43ce19;
+        margin: 0;
+        padding: 20px;
+    }
+    .container {
+        background-color: #fff;
+        padding: 20px 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .btn {
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .btn:hover {
+        background-color: #0056b3;
+    }
+    body{
+        text-align: center;
+    }
+</style>
+            </section>
+        </main>
+</html>
