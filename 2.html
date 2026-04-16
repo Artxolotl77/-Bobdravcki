@@ -1,0 +1,197 @@
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bobrodravčki - Domov</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-home">
+    <div class="shell">
+        <header>
+            <h1>V OBJEMU DRAVE: BOBDRAVČKI</h1>
+            <nav>
+                <a  href="index.html">Meni</a>
+                <a  href="0.html">Sledi bobra</a>
+                <a class="active" href="2.html">Uganke</a>
+                <a href="3.html">Mokrišče</a>
+                <a href="4.html">Odpadki</a>
+                <a href="5.html">Zaklad</a>
+                <a href="6.html">Sodelujoči</a>
+            </nav>
+        </header>
+
+        <main class="home-layout">
+            <section class="card">
+                <body><body class="page-home">
+
+<div class="container">
+    <h1>Uganke</h1>
+    <div id="start-screen">
+    <h2>Izberi razred</h2>
+    <button class="btn" onclick="startQuiz(quizDataVrtec)">Vrtec</button>
+    <button class="btn" onclick="startQuiz(quizData1_3)">1.–3. razred</button>
+    <button class="btn" onclick="startQuiz(quizData4_6)">4.–6. razred</button>
+    <button class="btn" onclick="startQuiz(quizData7_9)">7.–9. razred</button>
+</div>
+
+    <p id="score">Točke: 0</p>
+    <p id="message"></p>
+
+    <div id="quiz" style="display:none;">
+    <h2 id="question">Vprašanje</h2>
+    <div id="answers"></div>
+</div>
+</div>
+
+<script>
+// Vrtec
+const quizDataVrtec = [
+    { question: "Kaj vidiš okoli sebe?", answers: ["Drevesa", "Morje", "Letalo"], correct: 0 },
+    { question: "Katere barve opaziš?", answers: ["Črno", "Zeleno", "Sivo"], correct: 1 },
+    { question: "Ali slišiš kakšne živali?", answers: ["Da", "Ne", "Nisem prepričan/a"], correct: 0 },
+    { question: "Kako diši tukaj?", answers: ["Po plastiki", "Po naravi", "Po dimu"], correct: 1 },
+    { question: "Kakšna je zemlja?", answers: ["Delno mokra", "Mokra", "Suha"], correct: 0 },
+    { question: "Kje vidiš vodo?", answers: ["Na strehi", "V reki", "Na cesti"], correct: 1 },
+    { question: "Ali vidiš kakšno ptico ali žuželko?", answers: ["Nisem prepričan/a", "Da", "Ne"], correct: 1 },
+    { question: "Kaj raste v bližini?", answers: ["Plastika", "Kamen", "Roža"], correct: 2 }
+];
+
+// 1.–3. razred
+const quizData1_3 = [
+    { question: "Katere živali vidiš v mokrišču?", answers: ["Kamele", "Žabe", "Tigre"], correct: 1 },
+    { question: "Katere rastline rastejo ob vodi?", answers: ["Borovci", "Kaktusi", "Lokvanj"], correct: 2 },
+    { question: "Zakaj je tukaj veliko vode?", answers: ["Ker je tukaj reka", "Ker je to puščava", "Ker tukaj ni rastlin"], correct: 0 },
+    { question: "Ali vidiš reko?", answers: ["Nisem prepričan/a", "Ne", "Da"], correct: 2 },
+    { question: "Kaj slišiš ob mokrišču?", answers: ["Zvok siren", "Petje ptic", "Hrup motorjev"], correct: 1 },
+    { question: "Kako se mokrišče razlikuje od gozda?", answers: ["V mokrišču ni živali", "V mokrišču je več vode", "V mokrišču ni dreves"], correct: 1 },
+    { question: "Katere živali živijo v vodi?", answers: ["Krave", "Psi", "Ribe"], correct: 2 },
+    { question: "Zakaj je mokrišče pomembno?", answers: ["Ker je primerno za stavbe", "Ker je primerno za gradnjo cest", "Ker v njem živijo različne živali"], correct: 2 }
+];
+
+// 4.–6. razred
+const quizData4_6 = [
+    { question: "Katere vrste rastlin in živali opaziš?", answers: ["Puščavske živali", "Vodne rastline in ptice", "Morske ribe"], correct: 1 },
+    { question: "Kako voda vpliva na rastline?", answers: ["Nima vpliva", "Jih uniči", "Pomaga jim pri rasti"], correct: 2 },
+    { question: "Ali opaziš vpliv človeka?", answers: ["Ne", "Da", "Nisem prepričan/a"], correct: 1 },
+    { question: "Zakaj so mokrišča pomembna za naravo?", answers: ["Ker zmanjšujejo število živali", "Ker omogočajo gradnjo", "Ker ohranjajo biotsko raznovrstnost"], correct: 2 },
+    { question: "Kako mokrišče pomaga čistiti vodo?", answers: ["Onesnažuje vodo", "Segreva vodo", "Filtrira nečistoče"], correct: 2 },
+    { question: "Kakšna je razlika med mokriščem in jezerom?", answers: ["Ni razlike", "Jezero nima vode", "Mokrišče je običajno plitvejše"], correct: 2 },
+    { question: "Kaj bi se zgodilo, če bi mokrišče izsušili?", answers: ["Povečalo bi se število rib", "Povečala bi se količina vode", "Živali bi izgubile življenjski prostor"], correct: 2 }
+];
+
+// 7.–9. razred
+const quizData7_9 = [
+    { question: "Kako so rastline prilagojene življenju v mokrišču?", answers: ["Ne potrebujejo vode", "Rastejo le v suhem okolju", "Prenesejo veliko vlage"], correct: 2 },
+    { question: "Kako mokrišče vpliva na podnebje?", answers: ["Nima vpliva", "Segreva ozračje", "Zadržuje vlago in ogljik"], correct: 2 },
+    { question: "Katero prehranjevalno verigo lahko opaziš?", answers: ["Pes → mačka → miš", "Čriček → človek", "Žuželka → žaba → ptica"], correct: 2 },
+    { question: "Kakšna je vloga mokrišča pri preprečevanju poplav?", answers: ["Nima vpliva", "Povzroča poplave", "Zadržuje odvečno vodo"], correct: 2 },
+    { question: "Kako človek vpliva na mokrišča?", answers: ["Z izboljšanjem kakovosti vode", "Brez vpliva", "Z onesnaževanjem in posegi v prostor"], correct: 2 },
+    { question: "Kako bi raziskoval kakovost vode?", answers: ["S poslušanjem zvoka vode", "Samo z opazovanjem barve", "Z odvzemom vzorcev in analizo"], correct: 2 },
+    { question: "Katere ekosisteme lahko opazimo ob mokrišču?", answers: ["Samo morske ekosisteme", "Samo puščavske ekosisteme", "Vodne in kopenske ekosisteme"], correct: 2 }
+];
+let currentQuestion = 0;
+let score = 0;
+let quizData = [];
+
+// IZBIRA RAZREDA
+function startQuiz(selectedQuiz) {
+    quizData = selectedQuiz;
+    currentQuestion = 0;
+    score = 0;
+
+    document.getElementById("start-screen").style.display = "none";
+    document.getElementById("quiz").style.display = "block";
+
+    loadQuestion();
+}
+
+function loadQuestion() {
+    document.getElementById("message").innerText = "";
+
+    const q = quizData[currentQuestion];
+    document.getElementById("question").innerText = q.question;
+
+    const answersDiv = document.getElementById("answers");
+    answersDiv.innerHTML = "";
+
+    q.answers.forEach((answer, index) => {
+        const btn = document.createElement("button");
+        btn.innerText = answer;
+        btn.classList.add("btn");
+
+        btn.onclick = () => {
+            if (index === q.correct) {
+                score++;
+                document.getElementById("score").innerText = "Točke: " + score;
+                currentQuestion++;
+
+                if (currentQuestion < quizData.length) {
+                    loadQuestion();
+                } else {
+                    document.getElementById("quiz").innerHTML =
+                        "<h2>Zmagal si! tvoja črka je \"E\"</h2><p>Rezultat: " + score + " / " + quizData.length + "</p>";
+                }
+            } else {
+                const msg = document.getElementById("message");
+                msg.innerText = "❌ Napačen odgovor!";
+                msg.style.color = "red";
+            }
+        };
+
+        answersDiv.appendChild(btn);
+    });
+}
+</script>
+
+<style>
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.btn {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+#message {
+    font-weight: bold;
+    margin-top: 10px;
+}
+</style>
+
+</body>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #43ce19;
+        margin: 0;
+        padding: 20px;
+    }
+    .container {
+        background-color: #fff;
+        padding: 20px 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .btn {
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .btn:hover {
+        background-color: #0056b3;
+    }
+    body{
+        text-align: center;
+    }
+</style>
+            </section>
+        </main>
+</html>
